@@ -14,9 +14,29 @@ public class CH19_2FinallizeAndEquals {
 		p2 = null;
 //		System.gc();
 //		System.runFinalization(); -> 호출좀부탁해 ㅠㅠㅠㅠㅠ
+		INum num1 = new INum(10);
+		INum num2 = new INum(10);
+		INum num3 = new INum(10);
+		if(num1.equals(num2)) // == 이것도 동일한 인스턴스냐? 의미같다.
+			System.out.println("동일");
+		else
+			System.out.println("다름");
 		System.out.println("end of Program");
 	}
 
+}
+class INum{
+	private int num;
+	public INum(int num) {
+		this.num = num;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if(this.num == ((INum)obj).num) // 그래서 내가 입맛대로 정의 ㅋ 
+			return true;
+		else 
+			return false;
+	}
 }
 class Person {
 	String name;

@@ -1,0 +1,25 @@
+enum name{ .... }
+
+ordinal func : 해당 enum의 순서를 반환한다.
+values() : 현재 갖고있는 원소의 수를 반환한다.
+value() : 해당 초기화된 값 반환.
+
+ 기본 자료형 값을 감싸는 인스턴스? 래퍼클래스 !
+인스턴스를 보내라하는데,, 값보내주면 에러나... 그니까 값을 인스턴스화 시켜서 보내줘야해.- > 제네릭에 함보자 ㅋ
+기본자료형은 object 클래스만 관계가없다.
+Boolean Character Byte Short Interger Long Float Double 
+박싱 / 언박싱 개념.. ㄱㄱ
+3 -> 인스턴스화 : 박싱 // 박싱이 된 객체의 값을 꺼내오는 것을 언박싱
+
+박싱 : 
+Integer iObj = new Integer(10); // 박싱은 인스턴스 생성을 통해. immutable instance이기때문에 값을 바꿀라면 그냥 다시만들어줘야함
+Double dObj = new Double(3.14)
+int num1 = iObj.intValue( ); //값만 꺼냄 삭제 아님.. ok? 언박싱은 메소드를 통해,
+double num2 = dObj.doubleValue( ); // 
+
+오토박싱/언박싱
+오토박싱은 인스턴스가 와야할 위치에 기본자료형 값오면 진행하고,
+오토언박싱은 값이 와야할 자리에 인스턴스가 오면 진행한다.
+모든 래퍼클래스가 상속하는 클래스 java.lang.Number 
+Number class는 doubleValue intValue등 다양하게 오니까 박싱된 인스턴스가 아무고나 쓸수있엉 ㅎㅎ
+Integer n1 = Integer.valueOf(5); // == new Integer(5) 와 결과가 같다 !!
