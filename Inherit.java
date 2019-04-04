@@ -24,6 +24,10 @@ public class Inherit {
 		StrawBerryCheeseCake c3 = new StrawBerryCheeseCake();
 		c1.yummy();
 		c2.yummy();
+		if(c2 instanceof Cake) // 상위클래스형울 참조가능하냐? 물어보는거임
+			System.out.println("true");
+		else
+			System.out.println("false");
 	}
 
 }
