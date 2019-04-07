@@ -7,7 +7,7 @@ public class Yoon23_4_Queue {
 		 * 예외처리알고리즘적용
 		 * boolean add(E e)
 		 * E remove()
-		 * E element
+		 * E element()
 		 * 
 		 * 기능은 같은데 예외를 발생안시킴 그대신 반환 값을 말해주어서 판단하게함.
 		 * boolean offer(E e) // 넣을공간없으면 false
