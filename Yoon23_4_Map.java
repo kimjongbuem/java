@@ -34,6 +34,8 @@ public class Yoon23_4_Map {
 		System.out.println();
 			for(Iterator<Integer> I = ks.iterator() , L = ks.iterator(); L.hasNext();)
 				System.out.println("KEY : "+ L.next()+" Value : "+map.get(I.next()));
+			
+		// TreeMap Á¤·Ä...
 	}
 
 }
