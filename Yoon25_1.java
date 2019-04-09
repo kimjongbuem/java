@@ -10,7 +10,7 @@ public class Yoon25_1 {
 		System.out.println(Person.Baby);
 	}
 	enum Person{
-		Baby, MAN(29), WOMAN(25);
+		Baby, MAN(29), WOMAN(25); // public static final Person Man = new Person(29);
 		int age;
 		private Person() {
 			System.out.println("default Constructor"); // 생성자..? 인스턴스! 
