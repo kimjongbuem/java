@@ -38,9 +38,6 @@ public class Yoon26_1_2 {
 	}
 
 }
-interface Printable{
-	void print();
-}
 class Paper{
 	private String str;
 	public Paper(String s) { str =s; }

@@ -1,6 +1,7 @@
 package CH26;
 
 
+
 public class Yoon26_1_3 {
 
 	public static void main(String[] args) {
@@ -14,6 +15,10 @@ public class Yoon26_1_3 {
 
 	}
 
+}
+interface Printable{
+	default void print() {};
+	default void printString(String s){};
 }
 class Paper2{
 	private String str;
