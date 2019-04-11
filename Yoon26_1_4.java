@@ -18,6 +18,7 @@ public class Yoon26_1_4 {
 				// 클래스 이름이 아닌 정의임.
 		}
 		};
+		cmp2  = (String o1, String o2) -> o1.length() - o2.length();
 		Collections.sort(list,cmp2);
 		System.out.println(list);
 //		int a = 2;
