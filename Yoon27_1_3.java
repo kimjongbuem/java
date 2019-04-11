@@ -1,5 +1,6 @@
 package CH27;
 import java.util.*;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 public class Yoon27_1_3 {
 
@@ -12,14 +13,22 @@ public class Yoon27_1_3 {
 		System.out.println(sum);
 
 	}
-	public static int sum_List(Predicate<Integer>p, List<Integer> lst) {
+	public static int sum_List(IntPredicate p, List<Integer> list) {
 		int sum = 0;
-		for(int n : lst) {
+		for(int n : list) {
 			if(p.test(n))
 				sum+=n;
 		}
-		
-		
-		return sum;
+		return sum;  // 오토박싱 언박싱 과정 없다. 빠르다
 	}
+//	public static int sum_List(Predicate<Integer>p, List<Integer> lst) {
+//		int sum = 0;
+//		for(int n : lst) {
+//			if(p.test(n))
+//				sum+=n;
+//		}
+//		
+//		
+//		return sum;
+//	}
 }
