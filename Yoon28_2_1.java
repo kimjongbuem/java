@@ -6,23 +6,7 @@ public class Yoon28_2_1 {
 		// TODO Auto-generated method stub
 
 	}
-	public static void showCompAddr(Friend F) {
-		String addr = null;
-		if( F!= null)
-			Company com = F.getCmp();
-		
-			if(com != null)
-				ContInfo info = com.getCInfo();
-			
-				if(info!=null)
-					addr = info.getAdrs();
-				
-				if(addr != null)
-					System.out.println(addr);
-				else
-					System.out.println("There is no address information");
-		
-	}
+	
 }
 class Friend{ // 클래스 정의시 null이 안들어가게 정의하자.
 	String name;
@@ -33,6 +17,23 @@ class Friend{ // 클래스 정의시 null이 안들어가게 정의하자.
 	public String getName() {return name;}
 	public Company getCmp() {return cmp;}
 	
+//	public static void showCompAddr(Friend F) { 복잡허 죽것다~`~
+//		String addr = null;
+//		if( F!= null)
+//			Company com = F.getCmp();
+//		
+//			if(com != null)
+//				ContInfo info = com.getCInfo();
+//			
+//				if(info!=null)
+//					addr = info.getAdrs();
+//				
+//				if(addr != null)
+//					System.out.println(addr);
+//				else
+//					System.out.println("There is no address information");
+//		
+//	}
 }
 class Company{
 	String cName;
@@ -54,4 +55,6 @@ class ContInfo{
 	}
 	public String getPhone() {return phone;}
 	public String getAdrs() {return adrs;}
+	
+	
 }
