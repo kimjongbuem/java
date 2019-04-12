@@ -34,6 +34,15 @@ public class Yoon28_2_2 {
 			addr = ci.getAdrs();
 		else
 			addr = "There is no address"; // 야 이거 null마다 조건 붙이면 오바자나.... 28_2_3 으로
+		
+		// 단순화 //
+		Optional<ContInfo> csi =
+				Optional.of(new ContInfo(null, "Republic of Korea"));
+		phone = csi.map(c -> c.getPhone()).orElse("There is no phone Number");
+		// orElse가 있어야 일단 맵에서는 Optional 안감싼다.
+		addr = csi.map(c -> c.getAdrs()).orElse("There is no Address");
+		
+		System.out.println(phone+"\t"+addr);
+		
 	}
-
 }
