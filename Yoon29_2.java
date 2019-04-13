@@ -1,5 +1,6 @@
 package CH29_Stream1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +27,26 @@ public class Yoon29_2 {
 		System.out.println();
 		//Maping//
 		list.stream().mapToInt(s -> s.length()/2).forEach(s->System.out.print(s+"\t")); // ¹Ú½Ì¾ð¹Ú½Ì ¾ÈÇÒ·¡ //
+		System.out.println();
+		// filtering after Maping //
+		List<ToyPriceInfo> dept = new ArrayList<>();
+		dept.add(new ToyPriceInfo("AfricaHunter",300000));
+		dept.add(new ToyPriceInfo("Special Aquarium",2500000));
+		dept.add(new ToyPriceInfo("Exford Kin",110000));
+		dept.add(new ToyPriceInfo("Returning of king",1000000));
+		int sum = dept.stream().filter(toyprice -> toyprice.getPrice()>=1000000).mapToInt(toyModel -> toyModel.getPrice()).sum();
+		System.out.println(sum);
 	}
 
+}
+class ToyPriceInfo{
+	private String modelName;
+	int price;
+	
+	public ToyPriceInfo(String name, int price) {
+		this.modelName = name; this.price = price;
+	}
+	int getPrice() {
+		return price;
+	}
 }
