@@ -24,7 +24,7 @@ public class Yoon32_1_1 {
 		OutputStream stableOut = null;
 		try {
 			stableOut = new FileOutputStream("data.txt");
-			stableOut.write(120);
+			stableOut.write(255);
 		}
 		finally {
 			if(stableOut != null) // 출력스트림 생성했다면
