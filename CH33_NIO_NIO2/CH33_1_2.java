@@ -12,8 +12,10 @@ public class CH33_1_2 {
 		Path dp1 = Paths.get("C:\\javaStudy\\Empty");
 		dp1 = Files.createDirectories(dp1);
 		
-		Path dp2 = Paths.get("C:\\javaStudy2\\Empty");
+		Path dp2 = Paths.get("C:\\javaStudy2\\Empty"); // 다만든다
 		dp2 = Files.createDirectories(dp2);
+		// 패스값 을 반환 //
+		
 		
 	}
 
