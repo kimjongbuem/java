@@ -32,6 +32,19 @@ public class CH34_1_2 {
 		t1.start();
 		t2.start();
 		
+		Task t3 = new Task();
+		t3.start();
+		Task t4 = new Task();
+		t4.start();
 	}
-
 }
+// 쓰레드를 상속받아 클래스 정의 //
+class Task extends Thread{
+	public void run() {
+		int n1 = 10;
+		int n2 = 20;
+		String name = Thread.currentThread().getName();
+		System.out.println(name + ": "+(n1+n2));
+	}
+}
+
