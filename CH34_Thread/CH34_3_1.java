@@ -2,6 +2,7 @@ package CH34_Thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class CH34_3_1 {
 
@@ -17,6 +18,21 @@ public class CH34_3_1 {
 		ExecutorService exr = Executors.newSingleThreadExecutor();
 		exr.submit(task); // 작업끝나면 돌아간다. 
 		exr.shutdown();
+		
+		
+		
+			
+		}
 	}
 
+class MyClass{
+	ReentrantLock criticObj = new ReentrantLock();
+	void myMethod() {
+		criticObj.lock();
+		try {
+			// 
+		}finally {
+			criticObj.unlock(); // 언락 
+		}
+	}
 }
