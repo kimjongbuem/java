@@ -1,5 +1,7 @@
 package TelephoneProject;
 
+import java.util.Scanner;
+
 public class PhoneInfo {
 	private String name;
 	private String birthday;
@@ -30,10 +32,48 @@ public class PhoneInfo {
 	}
 }
 class mains{
+	static Scanner sc = new Scanner(System.in);
+	public static void showMenu(boolean re) {
+		if(!re)
+			System.out.println("선택하세요...\n1. 데이터 입력 \n2. 프로그램 종료 ");
+		else
+			System.out.println("다시 선택하세요...\n1. 데이터 입력 \n2. 프로그램 종료 ");
+			
+	}
+	public static void readData() {
+		
+		System.out.println("이름을 입력해 주세요 : ");
+		String name = sc.nextLine();
+		System.out.println("폰번호를 입력해 주세요 : ");
+		String phoneNumber = sc.nextLine();
+		System.out.println("생일을 입력해 주세요 : ");
+		String birthday = sc.nextLine();
+		PhoneInfo p;
+		if(birthday == null)
+			p = new PhoneInfo(name,phoneNumber);
+		else
+			p = new PhoneInfo(name,phoneNumber,birthday);
+		System.out.println("입력된 정보 출력...");
+		p.showTelephoneInfo();
+		}
 	public static void main(String[] args) {
-		PhoneInfo p1 = new PhoneInfo("김은정","010-2254-6556","980325");
-		PhoneInfo p2 = new PhoneInfo("김찬후","010-1111-1556");
-		p1.showTelephoneInfo();
-		p2.showTelephoneInfo();
+		int choice;
+		boolean reEnter = false;
+		while(true) {
+			showMenu(reEnter);
+			choice = sc.nextInt();
+			sc.nextLine();
+			switch(choice) {
+			case 1:
+				readData();
+				break;
+			case 2:
+				return;
+			default:
+				reEnter = true;
+				continue;	
+			}
+			reEnter = false;
+		}	
 	}
 }
