@@ -23,6 +23,9 @@ public class mains{
 				manager.removePhoneInfo();
 				break;
 			case 4:
+				manager.showAllinfo();
+				break;
+			case 5:
 				return;
 			default:
 				reEnter = true;
