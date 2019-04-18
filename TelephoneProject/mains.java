@@ -13,19 +13,19 @@ public class mains{
 			choice = sc.nextInt();
 			sc.nextLine();
 			switch(choice) {
-			case 1:
+			case SELECT_MENU.INPUT:
 				manager.readData();
 				break;
-			case 2:
+			case SELECT_MENU.SEARCH:
 				manager.searchShowInfo();
 				break;
-			case 3:
+			case SELECT_MENU.DELETE:
 				manager.removePhoneInfo();
 				break;
-			case 4:
+			case SELECT_MENU.ALL_OUTPUT:
 				manager.showAllinfo();
 				break;
-			case 5:
+			case SELECT_MENU.EXIT:
 				return;
 			default:
 				reEnter = true;

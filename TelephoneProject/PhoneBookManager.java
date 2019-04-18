@@ -1,6 +1,12 @@
 package TelephoneProject;
 
 import java.util.Scanner;
+interface SELECT_MENU{
+	int INPUT = 1, SEARCH = 2, DELETE = 3, ALL_OUTPUT = 4, EXIT= 5;
+}
+interface SELECT_INPUT{
+	int NORMAL = 1, UNIV = 2, COMPANY = 3; 
+}
 public class PhoneBookManager {
 	static Scanner sc = new Scanner(System.in);
 	boolean re = false;
@@ -46,13 +52,13 @@ public class PhoneBookManager {
 			choice = sc.nextInt();
 			sc.nextLine();
 			switch(choice) {
-			case 1:
+			case SELECT_INPUT.NORMAL:
 				readNormalPhoneInfo();
 				return;
-			case 2:
+			case SELECT_INPUT.UNIV:
 				readUnivPhoneInfo();
 				return;
-			case 3:
+			case SELECT_INPUT.COMPANY:
 				readCompanyPhoneInfo();
 				return;
 			default:
