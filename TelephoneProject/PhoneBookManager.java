@@ -5,12 +5,21 @@ public class PhoneBookManager {
 	static Scanner sc = new Scanner(System.in);
 	PhoneInfo[] info;
 	private int count;
+	private final int MAX_COUNT = 100;
 	PhoneBookManager(){
-		info = new PhoneInfo[100];
+		info = new PhoneInfo[MAX_COUNT];
 		count = 0;
 	}
 	int getCount() {
 		return count;
+	}
+	private int search(String name) {
+		for(int idx =0; idx<count;idx++){
+			if(info[idx].getName().equals(name)){
+				return idx;
+			}
+		}
+		return -1;
 	}
 	public void showMenu(boolean re) {
 		if(!re)
@@ -37,26 +46,45 @@ public class PhoneBookManager {
 		System.out.println("입력된 정보 출력...");
 		p.showTelephoneInfo();
 		info[count++] = p;
+		System.out.println("데이터 입력이 완료 되었습니다.");
 	}
-	public void removePhoneInfo(String name) {
-		for(int i =0; i<count;i++){
-			if(info[i].getName().equals(name)){
-				for(int j = i;j<count;j++)
-					info[j] = info[j+1];
-				count--;
-				return;
-			}
-		}// 없으면 //
-		System.out.println("해당 이름을 가진 사람이 없습니다 !");
+	public void removePhoneInfo() {
+		if(count == 0) {
+			System.out.println("삭제할 데이터가 없습니다");
+			return;
+		}
+		System.out.println("데이터 검색을 시작합니다...");
+		System.out.println("이름 :");
+		String removeName = sc.nextLine();
+		int idx = search(removeName);
+		if(idx == -1) {// 없으면 //
+			System.out.println("해당 이름을 가진 사람이 없습니다 !");
+			return;
+		}
+		else {
+			for(int midx = idx;midx<count - 1;midx++)
+				info[midx] = info[midx + 1];
+		}
+		System.out.println("데이터 삭제가 완료 되었습니다");
+		count--;
+		
 	}
-	public void searchShowInfo(String name) {
-		for(int i =0; i<count;i++){
-			if(info[i].getName().equals(name)){
-				info[i].showTelephoneInfo();
-				return;
-			}
-		}// 없으면 //
-		System.out.println("해당 이름을 가진 사람이 없습니다 !");
+	public void searchShowInfo() {
+		if(count == 0) {
+			System.out.println("찾을 데이터가 없습니다");
+			return;
+		}
+		System.out.println("데이터 검색을 시작합니다...");
+		System.out.println("이름 :");
+		String searchName = sc.nextLine();
+		int idx = search(searchName);
+		if(idx == -1) {// 없으면 //
+			System.out.println("해당 이름을 가진 사람이 없습니다 !");
+			return;	
+		}
+		else
+			info[idx].showTelephoneInfo();
+		System.out.println("데이터 검색이 완료 되었습니다.");
 	}
 }
 class PhoneInfo {

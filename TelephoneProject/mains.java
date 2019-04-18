@@ -17,24 +17,10 @@ public class mains{
 				manager.readData();
 				break;
 			case 2:
-				if(manager.getCount() == 0) {
-					System.out.println("찾을 데이터가 없습니다");
-					break;
-				}
-				System.out.println("데이터 검색을 시작합니다...");
-				System.out.println("이름 :");
-				String searchName = sc.nextLine();
-				manager.searchShowInfo(searchName);
+				manager.searchShowInfo();
 				break;
 			case 3:
-				if(manager.getCount() == 0) {
-					System.out.println("삭제할 데이터가 없습니다");
-					break;
-				}
-				System.out.println("데이터 검색을 시작합니다...");
-				System.out.println("이름 :");
-				String removeName = sc.nextLine();
-				manager.removePhoneInfo(removeName);
+				manager.removePhoneInfo();
 				break;
 			case 4:
 				return;
