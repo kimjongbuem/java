@@ -19,6 +19,17 @@ public class TestEqualsMethod {
 		}catch(CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
+		Rectangle r = new Rectangle(1,2,3,4);
+		Rectangle cpyR;
+		try {
+			cpyR = (Rectangle)r.clone();
+			r.changePos(4, 3, 2, 1);
+			cpyR.showPosition();
+			r.showPosition();
+			
+		}catch(CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
@@ -40,8 +51,12 @@ class Point implements Cloneable{
 	public Object clone()throws CloneNotSupportedException{
 		return super.clone();
 	}
+	void changePos(int xpos, int ypos) {
+		this.xpos = xpos;
+		this.ypos = ypos;
+	}
 }
-class Rectangle{
+class Rectangle implements Cloneable{
 	Point a,b;
 	public Rectangle(int xpos1,int ypos1,int xpos2,int ypos2) {
 		a = new Point(xpos1,ypos1);
@@ -64,5 +79,15 @@ class Rectangle{
 			System.out.println("¥Ÿ∏®¥œ¥Ÿ.");
 			return false;
 		}
+	}
+	public void changePos(int xpos1, int ypos1,int xpos2, int ypos2) {
+		a.changePos(xpos1, ypos1);
+		b.changePos(xpos2, ypos2);
+	}
+	public Object clone()throws CloneNotSupportedException{
+		// return super.clone(); æË¿∫∫πªÁ
+		Rectangle rg = (Rectangle)super.clone();
+		rg.a = (Point)a.clone(); rg.b = (Point)b.clone();
+		return rg; // ±Ì¿∫∫πªÁ
 	}
 }
