@@ -1,5 +1,6 @@
 package TelephoneProject;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 interface SELECT_MENU{
 	int INPUT = 1, SEARCH = 2, DELETE = 3, ALL_OUTPUT = 4, EXIT= 5;
@@ -9,7 +10,6 @@ interface SELECT_INPUT{
 }
 public class PhoneBookManager {
 	static Scanner sc = new Scanner(System.in);
-	boolean re = false;
 	private int NOT_FOUND = -1;
 	PhoneInfo[] info;
 	private int count;
@@ -29,28 +29,26 @@ public class PhoneBookManager {
 		}
 		return NOT_FOUND;
 	}
-	public void showMenu(boolean re) {
-		if(!re)
+	public void showMenu() {
 			System.out.println("선택하세요...\n1. 데이터 입력 \n2. 데이터 검색\n3. 데이터 삭제\n4. 데이터 전체출력\n5. 프로그램 종료 ");
-		else
-			System.out.println("다시 선택하세요...\n1. 데이터 입력 \n2. 데이터 검색\n3. 데이터 삭제\n4. 데이터 전체출력\n5. 프로그램 종료");
 	}
-	public void showSubMenu(boolean re) {
-		if(!re)
+	public void showSubMenu() {
 			System.out.println("1. 일반\t2. 대학\t3. 회사");
-		else
-			System.out.println("다시입력하세요...\t1. 일반\t2. 대학\t3. 회사");
+			System.out.println("선택>>");
 	}
 	public void readData() {
 		if(count == 100){
 			System.out.println("더 이상 데이터를 추가 할 수 없습니다 !");
 			return;
 		}
+		try {
 		while(true) {
 			int choice;
-			showSubMenu(re);
+			showSubMenu();
 			choice = sc.nextInt();
 			sc.nextLine();
+			if(SELECT_INPUT.COMPANY < choice || SELECT_INPUT.NORMAL > choice)
+				throw new ChoiceNumberException(choice);
 			switch(choice) {
 			case SELECT_INPUT.NORMAL:
 				readNormalPhoneInfo();
@@ -62,8 +60,10 @@ public class PhoneBookManager {
 				readCompanyPhoneInfo();
 				return;
 			default:
-				re = true;
 			}
+		}
+		}catch(ChoiceNumberException e) {
+			e.showExceptionMessage();
 		}
 	}
 	public void readNormalPhoneInfo() {
@@ -75,7 +75,6 @@ public class PhoneBookManager {
 		System.out.println("입력된 정보 출력...");
 		info[count++].showInfo();
 		System.out.println("데이터 입력이 완료 되었습니다.");
-		re = false;
 	}
 	public void readCompanyPhoneInfo() {
 		System.out.println("이름을 입력해 주세요 : ");
@@ -88,7 +87,6 @@ public class PhoneBookManager {
 		System.out.println("입력된 정보 출력...");
 		info[count++].showInfo();
 		System.out.println("데이터 입력이 완료 되었습니다.");
-		re = false;
 	}
 	public void readUnivPhoneInfo() {
 		System.out.println("이름을 입력해 주세요 : ");
@@ -103,7 +101,6 @@ public class PhoneBookManager {
 		System.out.println("입력된 정보 출력...");
 		info[count++].showInfo();
 		System.out.println("데이터 입력이 완료 되었습니다.");
-		re = false;
 	}
 	public void removePhoneInfo() {
 		if(count == 0) {
