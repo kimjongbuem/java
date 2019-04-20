@@ -11,7 +11,7 @@ public class PriorityThread {
 		 m1.start();
 		 m2.start();
 		 m3.start();
-		 System.out.println("mainThread end");
+		 System.out.println();
 	}
 
 }
