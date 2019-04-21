@@ -21,7 +21,7 @@ public class PhoneBookManager {
 	static Scanner sc = new Scanner(System.in);
 	private int count = 0;
 	HashSet<PhoneInfo> info = new HashSet<>();
-	private final File file = new File("PhoneInfo.ser");
+	private final File file = new File("PhoneInfo.txt");
 	PhoneBookManager(){
 		readPhoneInfo();
 	}
@@ -52,11 +52,12 @@ public class PhoneBookManager {
 			if(temp == null)
 				break;
 			info.add(temp);
+			count++;
 			}
 		}catch(IOException e) {
-			e.printStackTrace();
+			return;
 		}catch(ClassNotFoundException e) {
-			e.printStackTrace();
+			return;
 		}
 	}
 	
@@ -222,7 +223,7 @@ class PhoneUnivInfo extends PhoneInfo{
 	}
 	public void showInfo() {
 		super.showInfo();
-		System.out.println("학년 : "+year+"\t전공 : "+major);
+		System.out.print("학년 : "+year+"\t전공 : "+major);
 	}	
 }
 class PhoneComInfo extends PhoneInfo{

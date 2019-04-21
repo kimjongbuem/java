@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class mains{
 	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
-		PhoneBookManager manager = new PhoneBookManager(); 
+		PhoneBookManager manager = new PhoneBookManager();
 		int choice;
 		while(true) {
 			try {
