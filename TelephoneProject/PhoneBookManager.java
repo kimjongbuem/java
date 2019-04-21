@@ -1,5 +1,12 @@
 package TelephoneProject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Iterator;
@@ -13,9 +20,10 @@ interface SELECT_INPUT{
 public class PhoneBookManager {
 	static Scanner sc = new Scanner(System.in);
 	private int count = 0;
-	HashSet<PhoneInfo> info;
+	HashSet<PhoneInfo> info = new HashSet<>();
+	private final File file = new File("PhoneInfo.ser");
 	PhoneBookManager(){
-		info = new HashSet<>();
+		readPhoneInfo();
 	}
 	private PhoneInfo search(String name) {
 		for(Iterator<PhoneInfo> i = info.iterator(); i.hasNext() ;){
@@ -26,6 +34,33 @@ public class PhoneBookManager {
 		}
 		return null;
 	}
+	public void storePhoneInfo() {
+		try(ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(file))){
+			for(Iterator<PhoneInfo> i = info.iterator(); i.hasNext();) {
+				objectOut.writeObject(i.next());
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void readPhoneInfo() {
+		if(!file.exists())
+			return;
+		try(ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(file))){
+			while(true) {
+			PhoneInfo temp = (PhoneInfo)objectIn.readObject();
+			if(temp == null)
+				break;
+			info.add(temp);
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public void showMenu() {
 			System.out.println("선택하세요...\n1. 데이터 입력 \n2. 데이터 검색\n3. 데이터 삭제\n4. 데이터 전체출력\n5. 프로그램 종료 ");
 	}
@@ -147,7 +182,7 @@ public class PhoneBookManager {
 	}
 
 }
-class PhoneInfo {
+class PhoneInfo implements Serializable{
 	private String name;
 	private String phoneNumber;
 	

@@ -28,6 +28,7 @@ public class mains{
 				manager.showAllinfo();
 				break;
 			case SELECT_MENU.EXIT:
+				manager.storePhoneInfo();
 				return;
 			default:
 				continue;	
