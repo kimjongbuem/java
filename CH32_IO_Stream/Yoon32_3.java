@@ -13,7 +13,7 @@ public class Yoon32_3 {
 			e.printStackTrace();
 		}
 		
-		try(Reader out = new FileReader("data.txt")){
+		try(Reader out = new FileReader("data2.txt")){
 			int ch;
 			while(true) {
 				ch = out.read();
