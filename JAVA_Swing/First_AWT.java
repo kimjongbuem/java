@@ -14,7 +14,7 @@ public class First_AWT {
 		frm.setLayout(new FlowLayout());
 		WindowListener listen = new WindowAdapter() {
 			public void windowClosing(WindowEvent ev) {
-				System.exit(0);
+				System.exit(0); // 정상적인 프로그램 종료 //
 			}
 		};
 		frm.addWindowListener(listen);
