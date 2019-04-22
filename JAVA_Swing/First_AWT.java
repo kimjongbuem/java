@@ -1,6 +1,9 @@
 package JAVA_Swing;
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class First_AWT {
 
@@ -9,7 +12,12 @@ public class First_AWT {
 		Frame frm = new Frame("First AWT");
 		frm.setBounds(120,120,400,100);
 		frm.setLayout(new FlowLayout());
-		
+		WindowListener listen = new WindowAdapter() {
+			public void windowClosing(WindowEvent ev) {
+				System.exit(0);
+			}
+		};
+		frm.addWindowListener(listen);
 		Button btn1 = new Button("myBt1");
 		Button btn2 = new Button("myBtn2");
 		Button btn3 = new Button("myBtn3");
