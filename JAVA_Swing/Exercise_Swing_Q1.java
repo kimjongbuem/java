@@ -1,10 +1,13 @@
 package JAVA_Swing;
-import java.awt.*;
+
+import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.*;
-public class EventHandler {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Exercise_Swing_Q1 {
 
 	public static void main(String[] args) {
 		JFrame frm = new JFrame("First Swing");
@@ -12,18 +15,53 @@ public class EventHandler {
 		frm.setLayout(new FlowLayout());
 		
 		JButton btn1 = new JButton("myBt1");
-		MouseListener listener = new MouseEventHandler();
+		RevisedMouseEventHandler listener = new RevisedMouseEventHandler();
 		btn1.addMouseListener(listener);
 		JButton btn2 = new JButton("myBtn2");
 		JButton btn3 = new JButton("myBtn3");
+		btn2.addMouseListener(listener);
+		btn3.addMouseListener(listener);
+		frm.addMouseListener(new FrameMouseEventHandler());
 		frm.add(btn1); frm.add(btn2);                       
 		frm.add(btn3);
 		frm.setVisible(true);
-		
+
 	}
 
 }
-class MouseEventHandler implements MouseListener{
+class FrameMouseEventHandler implements MouseListener{
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("JFrame상에서 마우스 버튼 눌렸다 풀림~");
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+class RevisedMouseEventHandler implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -35,25 +73,18 @@ class MouseEventHandler implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("마우스 버튼 눌림");
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("커서 버튼 풀림");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		System.out.println("커서 버튼위 진입!");
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("커서 버튼위 탈출");
 	}
 	
 }
