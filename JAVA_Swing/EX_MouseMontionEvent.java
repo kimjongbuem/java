@@ -13,6 +13,13 @@ public class EX_MouseMontionEvent {
 		frm.addMouseMotionListener(new MouseMotionHandler());
 		frm.setVisible(true);
 		frm.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		JFrame test = new JFrame("Mouse Motion2");
+		test.setBounds(120,120,400,100);
+		test.setLayout(new FlowLayout());
+		
+		test.addMouseListener(new MouseEventHandlerOmit());
+		test.setVisible(true);
+		test.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 
 }
