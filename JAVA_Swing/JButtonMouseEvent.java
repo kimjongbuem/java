@@ -1,5 +1,7 @@
 package JAVA_Swing;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -14,17 +16,27 @@ public class JButtonMouseEvent {
 		frm.setBounds(120,120,250,150);
 		frm.setLayout(new FlowLayout());
 		
-		MouseListener handler = new MouseEventHandler();
+//		MouseListener handler = new MouseEventHandler2();
 		JButton b1 = new JButton("b1");
-		b1.addMouseListener(handler);
+//		b1.addMouseListener(handler);
 		JButton b2 = new JButton("b2");
-		b2.addMouseListener(handler);
-		
+//		b2.addMouseListener(handler);
+		ActionListener l = new ActionEventHandler();
+		b1.addActionListener(l);
+		b2.addActionListener(l);
 		frm.add(b1); frm.add(b2);
 		b1.setEnabled(false);
 		frm.setVisible(true);
 	}
 
+}
+class ActionEventHandler implements ActionListener{
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println(e.getActionCommand());
+	}
+	
 }
 class MouseEventHandler2 implements MouseListener{
 
