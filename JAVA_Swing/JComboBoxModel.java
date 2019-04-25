@@ -44,6 +44,15 @@ class TextChangedHandler implements ActionListener{
 public class JComboBoxModel {
 
 	public static void main(String[] args) {
+		try {
+		   // UIManager.setLookAndFeel(
+		          //  UIManager.getSystemLookAndFeelClassName());
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			//UIManager.setLookAndFeel("net.sourceforge.napkinlaf.NapkinLookandFeel");
+		}
+		catch(Exception e){
+			System.out.println("Exception!");
+		}
 		JFrame frm = new JFrame("Choice Component");
 		frm.setBounds(120,120,400,100);
 		frm.setLayout(new GridLayout(0,2));
@@ -66,8 +75,8 @@ public class JComboBoxModel {
 		JComboBox cmbBox2 = new JComboBox(friend);
 		cmbBox2.setEditable(true);
 		cmbBox2.addActionListener(new TextChangedHandler());
-		frm.add(label1); frm.add(label2); 
-		frm.add(cmbBox1); frm.add(cmbBox2);
+		frm.add(label1); frm.add(cmbBox1); frm.add(label2); frm.add(cmbBox2);
+
 		frm.setVisible(true);
 		frm.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
