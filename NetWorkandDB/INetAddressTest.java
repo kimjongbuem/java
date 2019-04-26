@@ -12,7 +12,7 @@ public class INetAddressTest {
 			ia = InetAddress.getByName("www.naver.com");
 			System.out.println(ia);
 			
-			InetAddress[] ala = InetAddress.getAllByName("http://www.google.com");
+			InetAddress[] ala = InetAddress.getAllByName("www.naver.com");
 			
 			for(int i=1;i<ala.length;i++)
 				System.out.println(ala[i]);
