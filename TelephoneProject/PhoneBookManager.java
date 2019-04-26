@@ -12,20 +12,26 @@ import java.util.Scanner;
 import java.util.Iterator;
 
 interface SELECT_MENU{
-	int INPUT = 1, SEARCH = 2, DELETE = 3, ALL_OUTPUT = 4, EXIT= 5;
+	int INPUT = 1, ALL_OUTPUT = 2, EXIT= 3;
 }
 interface SELECT_INPUT{
 	int NORMAL = 1, UNIV = 2, COMPANY = 3; 
 }
 public class PhoneBookManager {
 	static Scanner sc = new Scanner(System.in);
-	private int count = 0;
-	HashSet<PhoneInfo> info = new HashSet<>();
+	private static int count = 0;
+	 static HashSet<PhoneInfo> info = new HashSet<>();
 	private final File file = new File("PhoneInfo.txt");
 	PhoneBookManager(){
 		readPhoneInfo();
 	}
-	private PhoneInfo search(String name) {
+	public static int getCount() {
+			return count;
+	}
+	public static void minusCount() {
+		count--;
+	}
+	static PhoneInfo search(String name) {
 		for(Iterator<PhoneInfo> i = info.iterator(); i.hasNext() ;){
 			PhoneInfo foundedPhoneInfo = i.next();
 			if(foundedPhoneInfo.getName().equals(name)){
@@ -63,7 +69,7 @@ public class PhoneBookManager {
 	
 	
 	public void showMenu() {
-			System.out.println("선택하세요...\n1. 데이터 입력 \n2. 데이터 검색\n3. 데이터 삭제\n4. 데이터 전체출력\n5. 프로그램 종료 ");
+			System.out.println("선택하세요...\n1. 데이터 입력\n2. 데이터 전체출력\n3. 프로그램 종료 ");
 	}
 	public void showSubMenu() {
 			System.out.println("1. 일반\t2. 대학\t3. 회사");
@@ -200,6 +206,9 @@ class PhoneInfo implements Serializable{
 	public void showInfo() {
 			System.out.print("이름 : "+name+" \t핸드폰 번호 : "+phoneNumber+"\t");
 	}
+	public String toString() {
+		return "이름 : "+name+" \t핸드폰 번호 : "+phoneNumber+"\t";
+	}
 	public int hashCode() {
 		return name.hashCode() + phoneNumber.hashCode();
 	}
@@ -224,7 +233,10 @@ class PhoneUnivInfo extends PhoneInfo{
 	public void showInfo() {
 		super.showInfo();
 		System.out.print("학년 : "+year+"\t전공 : "+major);
-	}	
+	}
+	public String toString() {
+		return super.toString()+ "회사이름 : "+"학년 : "+year+"\t전공 : "+major;
+	}
 }
 class PhoneComInfo extends PhoneInfo{
 	String companyName;
@@ -236,5 +248,7 @@ class PhoneComInfo extends PhoneInfo{
 		super.showInfo();
 		System.out.print("회사이름 : "+companyName);
 	}	
-	
+	public String toString() {
+		return super.toString()+ "회사이름 : "+companyName;
+	}
 }
