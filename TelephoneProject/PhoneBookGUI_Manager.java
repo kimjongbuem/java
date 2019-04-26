@@ -28,9 +28,7 @@ class PhoneBookGUI_Manager extends JFrame {
 		//searchPanel.
 		searchPanel.add(searchText); searchPanel.add(srhBtn);
 		frm.add(searchPanel,BorderLayout.NORTH);
-		
-		
-		
+
 		/*Borad info*/
 		Border btnInfoBorder = BorderFactory.createEtchedBorder();
 		btnInfoBorder= BorderFactory.createTitledBorder(btnInfoBorder,"Information Board");
@@ -42,9 +40,7 @@ class PhoneBookGUI_Manager extends JFrame {
 		JScrollPane simpleScroll = new JScrollPane(ar, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		frm.add(simpleScroll,BorderLayout.CENTER);
-		
-	
-		
+
 		/*Delete*/
 		Border btnDeleteBorder = BorderFactory.createEtchedBorder();
 		btnDeleteBorder= BorderFactory.createTitledBorder(btnDeleteBorder,"Delete");
@@ -58,7 +54,7 @@ class PhoneBookGUI_Manager extends JFrame {
 		frm.add(deletePanel,BorderLayout.SOUTH);
 		
 		srhBtn.addActionListener(new SearchButtonHandler(ar,searchText));
-		delBtn.addActionListener(new SearchButtonHandler(ar,deleteText));
+		delBtn.addActionListener(new DeleteButtonHandler(ar,deleteText));
 		frm.setVisible(true);
 		frm.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
@@ -68,13 +64,13 @@ class PhoneBookGUI_Manager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(PhoneBookManager.getCount() == 0) {
-				System.out.println("찾을 데이터가 없습니다");
+				textArea.append("찾을 데이터가 없습니다");
 				return;
 			}
 			textArea.append("데이터 검색을 시작합니다...\n");
 			PhoneInfo tempInfo= PhoneBookManager.search(textField.getText());
 			if(tempInfo == null) {// 없으면 //
-				textArea.append("찾으시는 데이터가 없습니다 !");
+				textArea.append("\n찾으시는 데이터가 없습니다 !");
 				return;	
 			}
 			else
@@ -93,20 +89,20 @@ class PhoneBookGUI_Manager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(PhoneBookManager.getCount() == 0) {
-				System.out.println("삭제할 데이터가 없습니다");
+				textArea.append("\n삭제할 데이터가 없습니다");
 				return;
 			}
-			System.out.println("데이터 검색을 시작합니다...");
+			textArea.append("\n데이터 검색을 시작합니다...");
 			PhoneInfo tempInfo= PhoneBookManager.search(textField.getText());
 			if(tempInfo == null) {// 없으면 //
-				System.out.println("해당 이름을 가진 사람이 없습니다 !");
+				textArea.append("\n해당 이름을 가진 사람이 없습니다 !");
 				return;
 			}
 			else {
 				for(Iterator<PhoneInfo> i=PhoneBookManager.info.iterator();i.hasNext();) {
 					if(i.next()==tempInfo) {
 						i.remove();
-						textArea.append("데이터 삭제가 완료 되었습니다");
+						textArea.append("\n데이터 삭제가 완료 되었습니다");
 						PhoneBookManager.minusCount();
 						return;
 					}

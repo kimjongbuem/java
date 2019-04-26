@@ -24,6 +24,7 @@ public class mains{
 				break;
 			case SELECT_MENU.EXIT:
 				manager.storePhoneInfo();
+				System.exit(0);
 				return;
 			default:
 				continue;	
