@@ -23,10 +23,14 @@ public class Yoon29_2 {
 		 */
 		// filtering //
 		List<String> list = Arrays.asList("TOY", "Robot","Carfffff");
-		list.stream().filter(s -> s.length() == 3).forEach(s->System.out.print(s+"\t"));
+//		list.stream().filter(s -> s.length() == 3).forEach(s->System.out.print(s+"\t"));
+//		System.out.println();
+		list.stream().filter(s ->s.length() == 3).forEach(s -> System.out.print(s+" "));
 		System.out.println();
 		//Maping//
-		list.stream().mapToInt(s -> s.length()/2).forEach(s->System.out.print(s+"\t")); // π⁄ΩÃæπ⁄ΩÃ æ»«“∑° //
+//		list.stream().mapToInt(s -> s.length()/2).forEach(s->System.out.print(s+"\t")); // π⁄ΩÃæπ⁄ΩÃ æ»«“∑° //
+//		System.out.println();
+		list.stream().mapToInt(s -> s.length()/2).forEach(s->System.out.print(s+" ")); // « ≈Õ∞°æ∆¥— ∏ «Œ
 		System.out.println();
 		// filtering after Maping //
 		List<ToyPriceInfo> dept = new ArrayList<>();
@@ -35,6 +39,7 @@ public class Yoon29_2 {
 		dept.add(new ToyPriceInfo("Exford Kin",110000));
 		dept.add(new ToyPriceInfo("Returning of king",1000000));
 		int sum = dept.stream().filter(toyprice -> toyprice.getModelName().contains("Special")).mapToInt(toyModel -> toyModel.getPrice()).sum();
+				//dept.stream().filter(toy-> toy.getPrice()>=1000000).mapToInt(toy -> toy.getPrice()).sum();
 		System.out.println(sum);
 	}
 
