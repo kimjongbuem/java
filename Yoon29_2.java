@@ -34,7 +34,7 @@ public class Yoon29_2 {
 		dept.add(new ToyPriceInfo("Special Aquarium",2500000));
 		dept.add(new ToyPriceInfo("Exford Kin",110000));
 		dept.add(new ToyPriceInfo("Returning of king",1000000));
-		int sum = dept.stream().filter(toyprice -> toyprice.getPrice()>=1000000).mapToInt(toyModel -> toyModel.getPrice()).sum();
+		int sum = dept.stream().filter(toyprice -> toyprice.getModelName().contains("Special")).mapToInt(toyModel -> toyModel.getPrice()).sum();
 		System.out.println(sum);
 	}
 
@@ -48,5 +48,8 @@ class ToyPriceInfo{
 	}
 	int getPrice() {
 		return price;
+	}
+	String getModelName() {
+		return modelName;
 	}
 }
