@@ -8,6 +8,6 @@ public class AssertWithStringExample {
 		System.out.println("?");
 	}
 	static void drawBox(int x, int y) {
-		assert x>=0; assert y>=0;
+		assert x>=0 : "x must be 0 or more"; assert y>=0 : "y must be 0 or more"; 
 	}
 }
